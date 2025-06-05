@@ -1,4 +1,4 @@
-package com.savservices.partner.savservices_partner
+package com.savservices.partner
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,67 @@
+
+import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:partner/core/constant/SecureSharedPref.dart';
+import 'package:partner/data/models/PersonalDetail_Res.dart';
+
+
+
+class StorageServices {
+  late final SharedPreferences _prefs;
+
+  Future<StorageServices> init() async {
+    _prefs = await SharedPreferences.getInstance();
+    return this;
+  }
+
+  Future<bool> setBool(String key, bool value) async {
+    return await _prefs.setBool(key, value);
+  }
+  Future<bool> getBool(String key) async {
+    return _prefs.getBool(key)??false;
+  }
+  Future<bool> setString(String key, String value) async {
+    return await _prefs.setString(key, value);
+  }
+
+  Future<bool> setInt(String key, int value) async {
+    return await _prefs.setInt(key, value);
+  }
+
+
+
+  String? getaccesstoken() {
+    return _prefs.getString(SecureSharedPreference.deviceToken);
+  }
+
+
+
+
+  String? getDevice_id() {
+    return _prefs.getString(SecureSharedPreference.deviceToken);
+  }
+
+
+
+
+  Future<bool> remove(String key) {
+    return _prefs.remove(key);
+  }
+
+
+
+
+
+  String? get(String key) {
+    return _prefs.getString(key);
+  }
+
+
+
+  ProfileData getProfileData() {
+    Map<String, dynamic> jsondatais =
+    jsonDecode(_prefs.getString('profileData')!);
+    return ProfileData.fromJson(jsondatais);
+  }
+}

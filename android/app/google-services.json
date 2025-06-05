@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "554280989654",
+    "project_id": "savservices-6a3fb",
+    "storage_bucket": "savservices-6a3fb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554280989654:android:de0c7af6ec590984d6ea77",
+        "android_client_info": {
+          "package_name": "com.savservices.partner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSjJOQf9A_wgJ-jhxDpIF5ToYAXUhi9R4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
