@@ -1,8 +1,7 @@
 class ConstRes {
   ///------------------------ Backend urls and key ------------------------///
 
-  static const String base = 'https://admin.gomilan.app/';
-  // static const String base = 'https://desilove.aio-groups.com/';
+  static const String base = 'http://localhost:4000/';
   static const String aBaseUrl = '${base}api/';
   static const String aImageBaseUrl = '${base}public/storage/';
   static const String apiKey = '123';
