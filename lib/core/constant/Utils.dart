@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:partner/core/theme/themes_data.dart';
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
 class Utils {
@@ -16,7 +16,7 @@ class Utils {
         gravity: gravitys,
         // timeInSecForIosWeb: 1,
 
-        backgroundColor: ToggleThemeData.Appcolor,
+        backgroundColor: ColorRes.primaryYellow,
         textColor: Colors.white,
         fontSize: 16.0);
   }
@@ -40,7 +40,7 @@ class Utils {
         borderRadius: BorderRadius.circular(10.r),
       ),
       margin: const EdgeInsets.all(10.0),
-      backgroundColor: ToggleThemeData.Appcolor,
+      backgroundColor: ColorRes.primaryYellow,
       animation: animation,
     );
 

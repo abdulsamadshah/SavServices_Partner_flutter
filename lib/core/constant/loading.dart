@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:partner/core/theme/themes_data.dart';
-
+import 'package:partner/core/Utils/color_res.dart';
 
 class Loading {
 
@@ -22,7 +21,7 @@ class Loading {
                   width: 70.w,
                   child: const CircularProgressIndicator(
                     backgroundColor: Color(0xffD0D0D0),
-                    color: ToggleThemeData.Appcolor,
+                    color: ColorRes.primaryYellow,
                     strokeWidth: 10,
                   )),
             )

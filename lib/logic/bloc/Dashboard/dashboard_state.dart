@@ -3,40 +3,32 @@ part of 'dashboard_cubit.dart';
 @immutable
 class DashboardState {
   int selectedIndex;
+  int productTabIndex;
   DashData? detail;
   final String? error;
-  // DateTime? selectedDate;
+  final PageController pageController;
 
   DashboardState({
     this.selectedIndex = 0,
+    this.productTabIndex = 0,
+    required this.pageController,
     this.error,
     this.detail,
-    // this.selectedDate,
   });
 
   DashboardState copyWith({
     int? selectedIndex,
+    int? productTabIndex,
     DashData? detail,
     String? error,
-    // DateTime? selectedDate,
+    PageController? pageController,
   }) {
     return DashboardState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
+      productTabIndex: productTabIndex ?? this.productTabIndex,
       error: error ?? this.error,
       detail: detail ?? this.detail,
-      // selectedDate: selectedDate ?? this.selectedDate,
+      pageController: pageController ?? this.pageController,
     );
   }
-}
-
-final class DashboardInitial extends DashboardState {}
-
-class LoadingState extends DashboardState {}
-
-class DashboardLoadingSuccess extends DashboardState {
-  DashboardLoadingSuccess({super.detail});
-}
-
-class LoadingError extends DashboardState {
-  LoadingError(String error) : super(error: error);
 }

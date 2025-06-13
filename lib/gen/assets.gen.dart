@@ -9,92 +9,104 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetImagesGen {
-  const $AssetImagesGen();
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
 
-  /// File path: asset/images/English.png
-  AssetGenImage get english => const AssetGenImage('asset/images/English.png');
+  /// File path: assets/images/English.png
+  AssetGenImage get english => const AssetGenImage('assets/images/English.png');
 
-  /// File path: asset/images/India.png
-  AssetGenImage get india => const AssetGenImage('asset/images/India.png');
+  /// File path: assets/images/India.png
+  AssetGenImage get india => const AssetGenImage('assets/images/India.png');
 
-  /// File path: asset/images/Support.png
-  AssetGenImage get support => const AssetGenImage('asset/images/Support.png');
+  /// File path: assets/images/Support.png
+  AssetGenImage get support => const AssetGenImage('assets/images/Support.png');
 
-  /// File path: asset/images/appicon.png
-  AssetGenImage get appicon => const AssetGenImage('asset/images/appicon.png');
+  /// File path: assets/images/appicon.jpg
+  AssetGenImage get appicon => const AssetGenImage('assets/images/appicon.jpg');
 
-  /// File path: asset/images/enternetlost.jpg
+  /// File path: assets/images/doc2.png
+  AssetGenImage get doc2 => const AssetGenImage('assets/images/doc2.png');
+
+  /// File path: assets/images/doc3.png
+  AssetGenImage get doc3 => const AssetGenImage('assets/images/doc3.png');
+
+  /// File path: assets/images/doc4.png
+  AssetGenImage get doc4 => const AssetGenImage('assets/images/doc4.png');
+
+  /// File path: assets/images/docc1.png
+  AssetGenImage get docc1 => const AssetGenImage('assets/images/docc1.png');
+
+  /// File path: assets/images/enternetlost.jpg
   AssetGenImage get enternetlost =>
-      const AssetGenImage('asset/images/enternetlost.jpg');
+      const AssetGenImage('assets/images/enternetlost.jpg');
 
-  /// File path: asset/images/introuductionicon.png
+  /// File path: assets/images/introuductionicon.png
   AssetGenImage get introuductionicon =>
-      const AssetGenImage('asset/images/introuductionicon.png');
+      const AssetGenImage('assets/images/introuductionicon.png');
 
-  /// File path: asset/images/lost_internets.png
+  /// File path: assets/images/lost_internets.png
   AssetGenImage get lostInternets =>
-      const AssetGenImage('asset/images/lost_internets.png');
+      const AssetGenImage('assets/images/lost_internets.png');
 
-  /// File path: asset/images/profileui.png
+  /// File path: assets/images/profileui.png
   AssetGenImage get profileui =>
-      const AssetGenImage('asset/images/profileui.png');
+      const AssetGenImage('assets/images/profileui.png');
 
-  /// File path: asset/images/server_error.png
+  /// File path: assets/images/server_error.png
   AssetGenImage get serverError =>
-      const AssetGenImage('asset/images/server_error.png');
+      const AssetGenImage('assets/images/server_error.png');
 
-  /// File path: asset/images/steptwoillustrator.png
+  /// File path: assets/images/steptwoillustrator.png
   AssetGenImage get steptwoillustrator =>
-      const AssetGenImage('asset/images/steptwoillustrator.png');
+      const AssetGenImage('assets/images/steptwoillustrator.png');
 
-  /// File path: asset/images/whatsapp.png
+  /// File path: assets/images/whatsapp.png
   AssetGenImage get whatsapp =>
-      const AssetGenImage('asset/images/whatsapp.png');
+      const AssetGenImage('assets/images/whatsapp.png');
 
-  /// File path: asset/images/youtube.png
-  AssetGenImage get youtube => const AssetGenImage('asset/images/youtube.png');
+  /// File path: assets/images/youtube.png
+  AssetGenImage get youtube => const AssetGenImage('assets/images/youtube.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        english,
-        india,
-        support,
-        appicon,
-        enternetlost,
-        introuductionicon,
-        lostInternets,
-        profileui,
-        serverError,
-        steptwoillustrator,
-        whatsapp,
-        youtube
-      ];
+    english,
+    india,
+    support,
+    appicon,
+    doc2,
+    doc3,
+    doc4,
+    docc1,
+    enternetlost,
+    introuductionicon,
+    lostInternets,
+    profileui,
+    serverError,
+    steptwoillustrator,
+    whatsapp,
+    youtube,
+  ];
 }
 
-class $AssetSvgGen {
-  const $AssetSvgGen();
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
 
-  /// File path: asset/svg/profileback.svg
-  String get profileback => 'asset/svg/profileback.svg';
+  /// File path: assets/svg/profileback.svg
+  String get profileback => 'assets/svg/profileback.svg';
 
   /// List of all assets
   List<String> get values => [profileback];
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
-  static const $AssetImagesGen images = $AssetImagesGen();
-  static const $AssetSvgGen svg = $AssetSvgGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
@@ -122,7 +134,7 @@ class AssetGenImage {
     bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -154,15 +166,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;

@@ -6,9 +6,9 @@ import 'package:partner/data/models/CommonPostRes.dart';
 import '../models/PersonalDetail_Res.dart';
 
 class AuthRepo {
-  static Future<LoginRes> login({dynamic param}) async {
-    var response = await HttpUtil().post("/Zecapis/login", data: param);
-    return LoginRes.fromJson(response);
+  static Future<CommonPostRes> login({dynamic param}) async {
+    var response = await HttpUtil().post("admin/login", data: param);
+    return CommonPostRes.fromJson(response);
   }
 
 

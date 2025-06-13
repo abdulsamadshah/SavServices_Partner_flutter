@@ -4,8 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:partner/core/Utils/color_res.dart';
 
-import 'package:partner/core/theme/themes_data.dart';
+
 
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
@@ -54,15 +55,15 @@ class DialogBox {
               child: reausabletext(
                 lefButtonName.tr,
                 color: context.isDarkMode
-                    ? ToggleThemeData.white
-                    : ToggleThemeData.black,
+                    ? ColorRes.white
+                    : ColorRes.black,
                 fontsize: 16,
               ),
             ),
             CupertinoDialogAction(
               onPressed: rightButtonOntap,
               child: reausabletext(rightButtonName.tr,
-                  color: ToggleThemeData.Appcolor, fontsize: 16),
+                  color: ColorRes.primaryYellow, fontsize: 16),
             ),
           ],
         );

@@ -4,10 +4,12 @@ class ColorRes {
   static const Color transparent = Color(0x00000000);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
-  static const Color darkOrange = Color(0xFF35478C);     // Gold accent (text & borders)
+  static const Color darkOrange = Color(0xFF35478C);
   static const Color darkOrange20 = Color(0xFF1C1B29);   // Deep indigo (background)
   static const Color lightOrange = Color(0xFF35478C);    // Royal blue (hair & saree)
 
+  static const Color primaryYellow = Color(0xFF35478C); //App Colors
+  // static const Color primaryYellow = Color(0xFFFFF200); //App Colors
   static const Color salmon = Color(0xFFFF7575);
   static const Color grey = Color(0xFF909090);
   static const Color grey2 = Color(0xFF9C9C9C);

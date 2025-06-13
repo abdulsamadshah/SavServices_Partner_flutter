@@ -1,5 +1,5 @@
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/core/constant/utility.dart';
-import 'package:partner/core/theme/themes_data.dart';
 import 'package:partner/gen/fonts.gen.dart';
 
 import 'package:flutter/material.dart';
@@ -93,7 +93,7 @@ Widget InputField(
                   borderSide: BorderSide(
                       width: 2.w,
                       style: BorderStyle.solid,
-                      color: ToggleThemeData.Appcolor)),
+                      color: ColorRes.primaryYellow)),
               enabledBorder: OutlineInputBorder(
                   borderSide:
                       BorderSide(color: const Color(0xffDEDEDE), width: 1.w),

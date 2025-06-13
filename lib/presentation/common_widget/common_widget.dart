@@ -1,5 +1,5 @@
 
-import 'package:partner/core/theme/themes_data.dart';
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/gen/assets.gen.dart';
 import 'package:partner/gen/fonts.gen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -122,7 +122,7 @@ Widget ReusableDivider(
 
 Widget reausablebuttons(
     {void Function()? ontap,
-      Color bgcolor = ToggleThemeData.purple,
+      Color bgcolor = ColorRes.primaryYellow,
       String? title,
       bool enable=true,
       int width = 375,
@@ -283,5 +283,13 @@ Widget assetImage(String name,{double? height,double? width}) {
   );
 }
 
+
+Widget title(String title) {
+  return Padding(
+    padding: EdgeInsets.only(bottom: 3.h),
+    child: reausabletext(title,
+        fontfamily: FontFamily.interRegular, fontsize: 14),
+  );
+}
 
 

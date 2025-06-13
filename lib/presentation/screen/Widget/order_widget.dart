@@ -5,7 +5,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:partner/core/theme/themes_data.dart';
+import 'package:partner/core/Utils/color_res.dart';
+
 import 'package:partner/gen/fonts.gen.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
@@ -40,9 +41,9 @@ class _OrderWidgetState extends State<OrderWidget> {
           begin: Alignment.topRight,
           end: Alignment.bottomRight,
           colors: [
-            ToggleThemeData.purple,
-            ToggleThemeData.Appcolor,
-             ToggleThemeData.purple,
+            ColorRes.greyShade300,
+            ColorRes.greyShade300,
+             ColorRes.greyShade300,
           ],
         ),
       ),

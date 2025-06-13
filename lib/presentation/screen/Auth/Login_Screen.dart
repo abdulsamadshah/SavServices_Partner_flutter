@@ -1,18 +1,16 @@
 import 'dart:io';
 
-import 'package:go_router/go_router.dart';
-import 'package:partner/Routers/app_route_constants.dart';
+import 'package:partner/core/Utils/app_res.dart';
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/core/common_widget/Inputfield.dart';
-import 'package:partner/core/constant/BottomSheet/BottomSheet.dart';
 import 'package:partner/core/constant/appTheme.dart';
 import 'package:partner/core/constant/validator.dart';
-import 'package:partner/core/theme/themes_data.dart';
+
 import 'package:partner/gen/fonts.gen.dart';
 import 'package:partner/logic/bloc/SignIn/sign_in_bloc.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constant/Dialog.dart';
@@ -26,8 +24,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _logInKey = GlobalKey<FormState>();
-
   final loginBloc = SignInBloc();
 
   @override
@@ -64,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0.r),
-                    color: ToggleThemeData.Appcolor,
+                    color: ColorRes.lightOrange,
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -75,14 +71,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 30.h,
                         ),
                         reausabletext("Login",
-                            color: Colors.white,
+                            color: ColorRes.white,
                             fontfamily: FontFamily.interBold,
                             fontsize: 30),
                         SizedBox(
                           height: 5.h,
                         ),
-                        reausabletext("Welcome to Zecruiters RMS",
-                            color: Colors.white,
+                        reausabletext("Welcome to ${AppRes.appName}",
+                            color: ColorRes.white,
                             fontfamily: FontFamily.interRegular,
                             fontsize: 18)
                       ],
@@ -95,14 +91,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: ToggleThemeData.white,
+                      color: ColorRes.white,
                       borderRadius: BorderRadius.circular(30.r),
                     ),
                     child: Form(
-                      key: _logInKey,
+                      key: loginBloc.logInKey,
                       child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 15.w, top: 10.h, right: 15.w),
+                        padding:
+                            EdgeInsets.only(left: 15.w, top: 10.h, right: 15.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -110,30 +106,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: 250, height: 150),
                             SizedBox(
                               height: 50.h,
-                            ),
-                            title('Company Id'),
-                            textfield(
-                              context,
-
-                              hintname: "Enter Company Id",
-                              prefixicon: Icons.cabin,
-                              inputFormatters: [
-                                UpperCaseTextFormatter(),
-                              ],
-                              onChanged: (value) {
-                                loginBloc.add(companyIdEvent(value.toString()));
-
-                              },
-
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Company Id is required";
-                                }
-                                return null;
-                              },
-                            ),
-                            SizedBox(
-                              height: 15.h,
                             ),
                             title('Email Id'),
                             textfield(
@@ -152,13 +124,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             textfield(context,
                                 hintname: "Enter Password",
                                 prefixicon: Icons.lock, onChanged: (value) {
-                                  loginBloc.add(passwordEvent(value.toString()));
-                                }, validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return "Password is required";
-                                  }
-                                  return null;
-                                }),
+                              loginBloc.add(passwordEvent(value.toString()));
+                            },
+                                validator:
+                                    Validator.validate(title: "Password")),
                           ],
                         ),
                       ),
@@ -174,8 +143,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: reausablebuttons(
               title: "Login",
               ontap: () {
-                if (_logInKey.currentState!.validate()) {
-                  loginBloc.add(LoginEvent(context,));
+                if (loginBloc.logInKey.currentState!.validate()) {
+                  loginBloc.add(LoginEvent(
+                    context,
+                  ));
                 }
               }),
         ),
@@ -183,11 +154,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget title(String title) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 3.h),
-      child: reausabletext(title,
-          fontfamily: FontFamily.interRegular, fontsize: 14),
-    );
-  }
+
 }

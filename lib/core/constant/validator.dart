@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Validator {
   static String? validateEmail(dynamic? value) {
     String patttern =
@@ -28,10 +30,14 @@ class Validator {
 
 
 
-  static String? validate({String? value, title}) {
-    if (value == null || value.isEmpty) {
-      return "$title is required";
-    }
-    return null;
+
+
+  static FormFieldValidator<String> validate({required String title}) {
+    return (String? value) {
+      if (value == null || value.isEmpty) {
+        return "$title is required";
+      }
+      return null;
+    };
   }
 }

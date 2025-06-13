@@ -1,14 +1,15 @@
 
 import 'package:flutter/material.dart';
-import 'package:partner/core/constant/SecureSharedPref.dart';
+import 'package:partner/core/Utils/pref_res.dart';
+
 
 
 import 'global.dart';
 
 class LogoutUser {
   void logout(BuildContext context) {
-    Global.storageServices.remove(SecureSharedPreference.deviceToken);
-    Global.storageServices.remove(SecureSharedPreference.DEVICE_ID);
+    Global.storageServices.remove(PrefConst.deviceToken);
+    Global.storageServices.remove(PrefConst.DEVICE_ID);
 
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/SIGN_IN', (Route<dynamic> route) => false);

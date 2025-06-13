@@ -2,7 +2,7 @@
 
 class AppRes {
   // AppName
-  static const String appName = 'Orange';
+  static const String appName = 'SAVServices Partner';
 
   // For Datetime
   static const String hmmA = "h:mm a";

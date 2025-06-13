@@ -4,8 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/core/constant/utility.dart';
-import 'package:partner/core/theme/themes_data.dart';
+
 import 'package:partner/gen/fonts.gen.dart';
 
 
@@ -50,7 +51,7 @@ class MyAppTheme {
       width: width?.w,
       child: TextFormField(
         key: key,
-        cursorColor: ToggleThemeData.black,
+        cursorColor: ColorRes.black,
         cursorHeight: cursorHeight,
 
         keyboardType: keyboardType,
@@ -71,7 +72,7 @@ class MyAppTheme {
                 borderSide: const BorderSide(
                     width: 1,
                     style: BorderStyle.solid,
-                    color: ToggleThemeData.Appcolor)),
+                    color: ColorRes.primaryYellow)),
             enabledBorder: OutlineInputBorder(
                 borderSide:
                     BorderSide(color: const Color(0xffe8e8e8), width: 1.5.w),

@@ -1,17 +1,16 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:partner/Routers/app_route_constants.dart';
+import 'package:partner/core/Utils/color_res.dart';
+import 'package:partner/core/Utils/pref_res.dart';
 import 'package:partner/core/constant/Dialog.dart';
-import 'package:partner/core/constant/SecureSharedPref.dart';
+
 import 'package:partner/core/constant/appTheme.dart';
 import 'package:partner/core/constant/global.dart';
-import 'package:partner/core/constant/utility.dart';
-import 'package:partner/core/theme/themes_data.dart';
-import 'package:partner/data/Services/Pref_Services.dart';
+
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
 import '../../../gen/fonts.gen.dart';
@@ -45,8 +44,8 @@ class _NavigationbarState extends State<Navigationbar> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    ToggleThemeData.Appcolor,
-                    ToggleThemeData.purple,
+                    ColorRes.primaryYellow,
+                    ColorRes.primaryYellow,
                   ],
                 ),
                 borderRadius: BorderRadius.only(
@@ -75,19 +74,19 @@ class _NavigationbarState extends State<Navigationbar> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             reausabletext(
-                              "${Global.storageServices.getProfileData().firstName.toString() ?? ""} ${Global.storageServices.getProfileData().lastName.toString() ?? ""}",
+                              "Hello SavService",
                               fontfamily: FontFamily.interBold,
                               fontsize: 20,
                               widths: 160,
-                              color: ToggleThemeData.white,
+                              color: ColorRes.white,
                               fontweight: FontWeight.w800,
                             ),
                             reausabletext(
-                              Global.storageServices.getProfileData().emailId.toString() ?? "",
+                              "Savservices@gmail.com",
                               fontfamily: FontFamily.interRegular,
                               fontsize: 14,
                               widths: 160,
-                              color: ToggleThemeData.white,
+                              color: ColorRes.white,
                             ),
                           ],
                         ),
@@ -144,7 +143,7 @@ class _NavigationbarState extends State<Navigationbar> {
                           Navigator.pop(context);
                         }, rightButtonOntap: () {
                           Navigator.pop(context);
-                          Global.storageServices.remove(SecureSharedPreference.deviceToken);
+                          Global.storageServices.remove(PrefConst.deviceToken);
                           GoRouter.of(context)
                               .goNamed(MyAppRouteConstants.loginScreen);
                         });

@@ -8,7 +8,6 @@ import 'package:partner/core/Utils/Context_Utility.dart';
 import 'package:partner/gen/fonts.gen.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
-import '../theme/themes_data.dart';
 
 
 
@@ -48,9 +47,7 @@ InputDecoration DropdownDecoration(
   return InputDecoration(
     isDense: true,
     prefixIcon: prefixIcon,
-    fillColor: ContextUtility.context!.isDarkMode
-        ? ToggleThemeData.backgroundBlack
-        : Colors.white,
+    fillColor:  Colors.white,
     filled: true,
     hintText: hintText,
     hintStyle: const TextStyle(color: Colors.black),

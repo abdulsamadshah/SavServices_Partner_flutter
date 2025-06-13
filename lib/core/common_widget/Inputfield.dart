@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:partner/core/constant/appTheme.dart';
 import 'package:partner/core/constant/utility.dart';
-import 'package:partner/core/theme/themes_data.dart';
+import 'package:partner/core/Utils/color_res.dart';
 
 Widget textfield(BuildContext context,
     {TextEditingController? textctr,
@@ -46,7 +46,7 @@ suffix: suffix,
       prefixicon,
       size: 23.sp,
       color:  context.isDarkMode
-          ? ToggleThemeData.white
+          ? ColorRes.white
           :const Color(0xff534A4A),
     ):null
 

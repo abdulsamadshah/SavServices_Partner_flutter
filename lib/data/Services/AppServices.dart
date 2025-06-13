@@ -1,7 +1,7 @@
 
 import 'package:go_router/go_router.dart';
 import 'package:partner/Routers/app_route_constants.dart';
-import 'package:partner/core/constant/SecureSharedPref.dart';
+import 'package:partner/core/Utils/pref_res.dart';
 import 'package:partner/core/constant/global.dart';
 
 class AppServices {
@@ -12,7 +12,7 @@ class AppServices {
     //     MaterialPageRoute(
     //       builder: (context) => CallScreen(),
     //     ));
-    if (Global.storageServices.get(SecureSharedPreference.deviceToken) !=
+    if (Global.storageServices.get(PrefConst.deviceToken) !=
         null ) {
       GoRouter.of(context).goNamed(MyAppRouteConstants.dashBoardScreen);
     } else {

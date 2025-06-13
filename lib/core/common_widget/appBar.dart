@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:partner/core/theme/themes_data.dart';
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/gen/fonts.gen.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
@@ -17,8 +17,8 @@ PreferredSize mainAppBar(BuildContext context,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            ToggleThemeData.Appcolor,
-            ToggleThemeData.purple,
+            ColorRes.primaryYellow,
+            ColorRes.primaryYellow,
           ],
         ),
         borderRadius: BorderRadius.vertical(
@@ -58,3 +58,5 @@ PreferredSize mainAppBar(BuildContext context,
     ),
   );
 }
+
+

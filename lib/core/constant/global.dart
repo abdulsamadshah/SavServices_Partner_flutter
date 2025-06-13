@@ -1,7 +1,7 @@
 
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:partner/core/theme/themes_data.dart';
+import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/logic/debug/Bloc_Observer.dart';
 import 'storage_services.dart';
 
@@ -23,7 +23,7 @@ class Global {
     Bloc.observer = MyGlobalObserver();
 
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: ToggleThemeData.purple
+        statusBarColor: ColorRes.white
     ));
 
     storageServices = await StorageServices().init();

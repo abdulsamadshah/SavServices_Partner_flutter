@@ -1,8 +1,9 @@
 
 import 'dart:convert';
 
+import 'package:partner/core/Utils/pref_res.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:partner/core/constant/SecureSharedPref.dart';
+
 import 'package:partner/data/models/PersonalDetail_Res.dart';
 
 
@@ -32,14 +33,14 @@ class StorageServices {
 
 
   String? getaccesstoken() {
-    return _prefs.getString(SecureSharedPreference.deviceToken);
+    return _prefs.getString(PrefConst.deviceToken);
   }
 
 
 
 
   String? getDevice_id() {
-    return _prefs.getString(SecureSharedPreference.deviceToken);
+    return _prefs.getString(PrefConst.deviceToken);
   }
 
 
