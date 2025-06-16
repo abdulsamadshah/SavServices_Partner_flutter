@@ -63,7 +63,7 @@ class DialogBox {
             CupertinoDialogAction(
               onPressed: rightButtonOntap,
               child: reausabletext(rightButtonName.tr,
-                  color: ColorRes.primaryYellow, fontsize: 16),
+                  color: ColorRes.appColor, fontsize: 16),
             ),
           ],
         );

@@ -56,8 +56,8 @@ class _DashboardState extends State<DashboardScreen> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    ColorRes.primaryYellow,
-                    ColorRes.primaryYellow,
+                    ColorRes.appColor,
+                    ColorRes.appColor,
                   ],
                 ),
               ),
@@ -128,7 +128,7 @@ class _DashboardState extends State<DashboardScreen> {
                   activeColor: Colors.white,
                   color: Colors.grey,
                   backgroundColor: Colors.black,
-                  tabBackgroundColor: ColorRes.primaryYellow,
+                  tabBackgroundColor: ColorRes.appColor,
                   padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
                   tabs: const [
 

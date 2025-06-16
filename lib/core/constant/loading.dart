@@ -21,7 +21,7 @@ class Loading {
                   width: 70.w,
                   child: const CircularProgressIndicator(
                     backgroundColor: Color(0xffD0D0D0),
-                    color: ColorRes.primaryYellow,
+                    color: ColorRes.appColor,
                     strokeWidth: 10,
                   )),
             )

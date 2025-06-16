@@ -44,8 +44,8 @@ class _NavigationbarState extends State<Navigationbar> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    ColorRes.primaryYellow,
-                    ColorRes.primaryYellow,
+                    ColorRes.appColor,
+                    ColorRes.appColor,
                   ],
                 ),
                 borderRadius: BorderRadius.only(

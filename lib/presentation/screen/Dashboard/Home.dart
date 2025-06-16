@@ -73,8 +73,8 @@ class _HomeState extends State<Home> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    ColorRes.primaryYellow,
-                    ColorRes.primaryYellow,
+                    ColorRes.appColor,
+                    ColorRes.appColor,
                   ],
                 ),
               ),

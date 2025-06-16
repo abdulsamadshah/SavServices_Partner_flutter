@@ -122,7 +122,7 @@ Widget ReusableDivider(
 
 Widget reausablebuttons(
     {void Function()? ontap,
-      Color bgcolor = ColorRes.primaryYellow,
+      Color bgcolor = ColorRes.appColor,
       String? title,
       bool enable=true,
       int width = 375,

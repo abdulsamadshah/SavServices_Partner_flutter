@@ -117,7 +117,7 @@ class _ProductscreenState extends State<ProductMain>
                     "$title ${total_item == 0 ? "" :  state.productTabIndex==selectedtabs ? "($total_item)" : ""}",
                     fontsize: 16,
                     color:  state.productTabIndex==selectedtabs
-                        ?  ColorRes.primaryYellow
+                        ?  ColorRes.appColor
                         : ColorRes.white
 
                   ),

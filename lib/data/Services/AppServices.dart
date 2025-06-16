@@ -16,7 +16,8 @@ class AppServices {
         null ) {
       GoRouter.of(context).goNamed(MyAppRouteConstants.dashBoardScreen);
     } else {
-      GoRouter.of(context).goNamed(MyAppRouteConstants.loginScreen);
+      GoRouter.of(context).goNamed(MyAppRouteConstants.dashBoardScreen);
+      // GoRouter.of(context).goNamed(MyAppRouteConstants.loginScreen);
     }
   }
 }

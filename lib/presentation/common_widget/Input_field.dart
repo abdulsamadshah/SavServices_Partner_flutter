@@ -93,7 +93,7 @@ Widget InputField(
                   borderSide: BorderSide(
                       width: 2.w,
                       style: BorderStyle.solid,
-                      color: ColorRes.primaryYellow)),
+                      color: ColorRes.appColor)),
               enabledBorder: OutlineInputBorder(
                   borderSide:
                       BorderSide(color: const Color(0xffDEDEDE), width: 1.w),

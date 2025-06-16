@@ -16,7 +16,7 @@ class Utils {
         gravity: gravitys,
         // timeInSecForIosWeb: 1,
 
-        backgroundColor: ColorRes.primaryYellow,
+        backgroundColor: ColorRes.appColor,
         textColor: Colors.white,
         fontSize: 16.0);
   }
@@ -40,7 +40,7 @@ class Utils {
         borderRadius: BorderRadius.circular(10.r),
       ),
       margin: const EdgeInsets.all(10.0),
-      backgroundColor: ColorRes.primaryYellow,
+      backgroundColor: ColorRes.appColor,
       animation: animation,
     );
 

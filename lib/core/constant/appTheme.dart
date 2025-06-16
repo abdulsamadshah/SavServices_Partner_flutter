@@ -72,7 +72,7 @@ class MyAppTheme {
                 borderSide: const BorderSide(
                     width: 1,
                     style: BorderStyle.solid,
-                    color: ColorRes.primaryYellow)),
+                    color: ColorRes.appColor)),
             enabledBorder: OutlineInputBorder(
                 borderSide:
                     BorderSide(color: const Color(0xffe8e8e8), width: 1.5.w),

@@ -17,8 +17,8 @@ PreferredSize mainAppBar(BuildContext context,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            ColorRes.primaryYellow,
-            ColorRes.primaryYellow,
+            ColorRes.appColor,
+            ColorRes.appColor,
           ],
         ),
         borderRadius: BorderRadius.vertical(

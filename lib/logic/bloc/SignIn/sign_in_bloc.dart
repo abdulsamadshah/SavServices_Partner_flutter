@@ -42,6 +42,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       var result = await AuthRepo.login(param: {
         "Email": state.emailId,
         "Password": state.password,
+        
       });
 
       if (result.status == true) {
