@@ -86,7 +86,8 @@ class _LivescreenState extends State<Stockscreen> {
               ProductData? LiveProduct_data = productItem?[index];
               return Product_Ui(
                 context,
-                LiveProduct_data!,
+                LiveProduct_data!,   productCubit: productCubit,
+                type: "stock"
               );
             },
           ),

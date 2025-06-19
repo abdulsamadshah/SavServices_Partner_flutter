@@ -87,6 +87,7 @@ class _LivescreenState extends State<Pendingscreen> {
               return Product_Ui(
                 context,
                 LiveProduct_data!,
+                  productCubit: productCubit
               );
             },
           ),

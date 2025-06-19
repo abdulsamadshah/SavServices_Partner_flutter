@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:partner/core/Utils/urls.dart';
 import 'package:partner/data/http/http_util.dart';
 import 'package:partner/data/models/CommonPostRes.dart';
 
@@ -7,7 +8,7 @@ import '../models/PersonalDetail_Res.dart';
 
 class AuthRepo {
   static Future<CommonPostRes> login({dynamic param}) async {
-    var response = await HttpUtil().post("admin/login", data: param);
+    var response = await HttpUtil().post(Urls.login, data: param);
     return CommonPostRes.fromJson(response);
   }
 

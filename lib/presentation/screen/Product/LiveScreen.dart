@@ -28,6 +28,13 @@ class _LivescreenState extends State<Livescreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    productCubit.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -67,7 +74,7 @@ class _LivescreenState extends State<Livescreen> {
     );
   }
 
-  Widget LiveProduct({List<ProductData>? productItem, bool isLoading = false}) {
+  Widget LiveProduct({List<ProductData>? productItem, bool isLoading = false,}) {
     return MyCustomPullToRefresh(
       Indicatorekey: GlobalKey<LiquidPullToRefreshState>(),
       onTapCallback: () {
@@ -87,6 +94,7 @@ class _LivescreenState extends State<Livescreen> {
               return Product_Ui(
                 context,
                 LiveProduct_data!,
+                productCubit: productCubit
               );
             },
           ),

@@ -2,7 +2,7 @@ class ConstRes {
   ///------------------------ Backend urls and key ------------------------///
   var ImagenotFound = "https://thumbs.dreamstime.com/b/computer-logo-pc-logo-vector-computer-logo-pc-logo-vector-142583250.jpg";
 
-  static const String base = 'http://192.168.39.223:4000/';
+  static const String base = 'http://192.168.0.103:4000/';
   static const String aBaseUrl = '${base}api/';
   static const String aImageBaseUrl = base;
   static const String apiKey = '123';

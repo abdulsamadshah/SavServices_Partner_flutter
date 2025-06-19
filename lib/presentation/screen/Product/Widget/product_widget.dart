@@ -6,21 +6,17 @@ import 'package:partner/core/Utils/const_res.dart';
 import 'package:partner/core/constant/appTheme.dart';
 import 'package:partner/core/constant/html_utils.dart';
 import 'package:partner/core/constant/utility.dart';
-import 'package:partner/data/http/Constant.dart';
+
 import 'package:partner/data/models/Product/ProductRes.dart';
 import 'package:partner/gen/fonts.gen.dart';
-import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:get/get.dart';
+
+import 'package:partner/logic/bloc/Product/product_cubit.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
+import 'package:partner/presentation/screen/Product/Product_Detail_Screen.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:html/parser.dart' show parse;
+
 
 Widget commonTabBar(
   BuildContext context, {
@@ -71,17 +67,19 @@ Widget AddProductBtnWidget({void Function()? ontap}) {
 
 
 
-String htmlToPlainText(String htmlString) {
-  final document = parse(htmlString);
-  return parse(document.body?.text ?? "").documentElement?.text ?? "";
-}
+// String htmlToPlainText(String htmlString) {
+//   final document = parse(htmlString);
+//   return parse(document.body?.text ?? "").documentElement?.text ?? "";
+// }
 
 Widget Product_Ui(BuildContext context, ProductData product_item,
-    { String? prouductStatus}) {
+
+    {  required ProductCubit productCubit,String? type}) {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 6.h),
     child: InkWell(
       onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailScreen(productId: product_item.productId!, type: type,),));
         // Get.toNamed(Routes.Product_Detail, arguments: {
         //   "productid": product_item.productId.toString(),
         //   "type": product_item.verified,
@@ -145,7 +143,7 @@ Widget Product_Ui(BuildContext context, ProductData product_item,
                           SizedBox(
                             width: 182.w,
                             child: Text(
-                              htmlToPlainText(sanitizeHtml(product_item.productDesc ?? '')),
+                              product_item.productDesc ?? '',
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -164,19 +162,14 @@ Widget Product_Ui(BuildContext context, ProductData product_item,
 
                       SizedBox(
                         width: 50.w,
-                        child: product_item.productStatus == true
+                        child: type!="stock"
                             ? CupertinoSwitch(
-                          value: product_item.productStatus==false
-                              ? false
-                              : product_item.productStatus==true
-                              ? true
-                              : false,
+                          value: product_item.productStatus!,
                           activeColor: ColorRes.appColor,
                           onChanged: (value) {
-                            // controller?.Product_Status(context,
-                            //     type: prouductStatus,
-                            //     productid: int.parse(
-                            //         product_item.productId.toString()));
+                            productCubit.productStatus(context,
+                                productid: int.parse(
+                                    product_item.productId.toString()));
                           },
                         )
                             : Container(),
@@ -347,5 +340,52 @@ Widget DetailReausableItems({required String title, value}) {
         fontweight: FontWeight.w600,
       ),
     ],
+  );
+}
+
+
+Widget BackpressIcon(BuildContext context) {
+  return GestureDetector(
+    onTap: () async {
+      Navigator.pop(context);
+    },
+    child: Container(
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+      ),
+      height: 40.h,
+      width: 40.w,
+      child: Center(
+        child: Icon(
+          Icons.arrow_back_ios_new,
+          color: Colors.black,
+          size: 18.sp,
+        ),
+      ),
+    ),
+  );
+}
+
+
+Widget VariantsData({
+  String? data,
+  int width = 155,
+  required BuildContext context,
+}) {
+  return Container(
+    width: width.w,
+    padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+    decoration: BoxDecoration(
+      color: const Color(0xffececec),
+      borderRadius: BorderRadius.circular(7.r),
+      border: Border.all(color: Colors.black26, width: 1.w),
+    ),
+    child: reausabletext(
+      data ?? "",
+      fontfamily: FontFamily.interMedium,
+      fontsize: 14,
+      color: ColorRes.black,
+    ),
   );
 }
