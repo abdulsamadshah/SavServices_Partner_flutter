@@ -164,6 +164,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                         SizedBox(height: 10.h),
 
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -177,6 +178,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             ),
                           ],
                         ),
+
+
+                        SizedBox(height: 10.h),
+                        DetailReausableItems(
+                          title: detail?.pickUpTime ?? '',
+                          value: "PickUp Time".tr,
+                        ),
+
                       ],
                     ),
                   ),
@@ -207,7 +216,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                   Divider(height: 2.h, color: const Color(0xffF1F1F1), thickness: 5),
 
-                  Padding(
+                  detail?.mbps?.length==0?SizedBox():  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -345,7 +354,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       child: reausablebuttons(
                         title: "Edit Product".tr,
                         ontap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Updateproductscreen(detail: detail!,),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Updateproductscreen(detail: detail!,type: "update",),));
                         },
                       ),
                     ),

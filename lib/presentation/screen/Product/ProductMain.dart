@@ -9,6 +9,7 @@ import 'package:partner/presentation/screen/Product/LiveScreen.dart';
 import 'package:partner/presentation/screen/Product/PendingScreen.dart';
 import 'package:partner/presentation/screen/Product/StockScreen.dart';
 
+import 'UpdateProductScreen.dart';
 import 'Widget/product_widget.dart';
 
 class ProductMain extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ProductscreenState extends State<ProductMain>
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: AddProductBtnWidget(ontap: () {
-
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Updateproductscreen(),));
       }),
       body: Column(
         children: [

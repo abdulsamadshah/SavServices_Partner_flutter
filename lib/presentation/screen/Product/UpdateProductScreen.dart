@@ -1,8 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:partner/core/common_widget/appBar.dart';
+import 'package:partner/core/constant/Dialog.dart';
+import 'package:partner/core/constant/Dialog/Common_dialog.dart';
+import 'package:partner/core/constant/Utils.dart';
 import 'package:partner/core/constant/validator.dart';
 import 'package:partner/data/models/Product/ProductDetailRes.dart';
 import 'package:partner/logic/bloc/Product/ProductDetail/product_detail_cubit.dart';
@@ -14,8 +16,9 @@ import 'Widget/PickUpTime.dart';
 import 'Widget/UploadImage.dart';
 
 class Updateproductscreen extends StatefulWidget {
-  ProductDetail detail;
-  Updateproductscreen({super.key, required this.detail});
+  ProductDetail? detail;
+  String? type;
+  Updateproductscreen({super.key, this.detail, this.type});
 
   @override
   State<Updateproductscreen> createState() => _UpdateproductscreenState();
@@ -23,12 +26,13 @@ class Updateproductscreen extends StatefulWidget {
 
 class _UpdateproductscreenState extends State<Updateproductscreen> {
   final controller = ProductDetailCubit();
-
+  // final productKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> productKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.detailInit(context, widget.detail);
+      controller.detailInit(context, detail: widget.detail);
     });
   }
 
@@ -41,13 +45,12 @@ class _UpdateproductscreenState extends State<Updateproductscreen> {
           context,
           title: "Edit Product",
         ),
-        body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: ListView(
-                // shrinkWrap: true,
-                physics: ScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                children: [
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Form(
+                key: productKey,
+                child: Column(children: [
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 15.h),
                     decoration: BoxDecoration(
@@ -64,12 +67,12 @@ class _UpdateproductscreenState extends State<Updateproductscreen> {
                         ),
                         SizedBox(height: 2.h),
                         DropDownItems(
-                          title: widget.detail.categoryName == null
+                          title: widget.detail?.categoryName == null
                               ? "Category"
-                              : widget.detail.categoryName.toString(),
+                              : widget.detail?.categoryName.toString(),
                           dropdownItems: state.categoryList,
                           validator: (value) {
-                            if (value == null || value == "Category*") {
+                            if (value == null || value == "Category") {
                               return "Category Name can't be empty";
                             } else {
                               return null;
@@ -81,7 +84,7 @@ class _UpdateproductscreenState extends State<Updateproductscreen> {
                           onChanged: (value) {
                             if (value != null) {
                               final selectedItem =
-                                  state.categoryList?.firstWhere(
+                                  state.categoryList.firstWhere(
                                 (item) => item.name == value,
                               );
                               dynamic selected = {
@@ -151,11 +154,29 @@ class _UpdateproductscreenState extends State<Updateproductscreen> {
                       }
                     },
                   )
-
-                ])),
+                ]),
+              )),
+        ),
         bottomNavigationBar: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
-          child: reausablebuttons(title: "Update Product"),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+          child: reausablebuttons(
+            title: "Update Product",
+            ontap: () {
+              if (productKey.currentState!.validate()) {
+                if (widget.type == "update") {
+                  controller.updateProduct(context,
+                      productId:
+                          int.parse(widget.detail!.productId.toString()));
+                } else {
+                  if (state.selectedImages.isEmpty) {
+                    CommonDialog.errorMessage("Product image can't be empty");
+                  } else {
+                    controller.addProduct(context);
+                  }
+                }
+              }
+            },
+          ),
         ),
       ),
     );

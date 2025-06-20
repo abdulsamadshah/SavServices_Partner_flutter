@@ -1,4 +1,5 @@
 
+import 'package:dio/dio.dart';
 import 'package:partner/core/Utils/urls.dart';
 import 'package:partner/data/http/http_util.dart';
 import 'package:partner/data/models/CateogoryListRes.dart';
@@ -28,6 +29,16 @@ class ProductRepo{
   static Future<CateogoryListRes> getCategoryList() async {
     var response = await HttpUtil().get(Urls.getCategory,);
     return CateogoryListRes.fromJson(response);
+  }
+
+  static Future<CommonPostRes> createProduct(FormData data) async {
+    var response = await HttpUtil().post(Urls.createProduct,type: "formdata",formdata: data);
+    return CommonPostRes.fromJson(response);
+  }
+
+  static Future<CommonPostRes> updateProduct(FormData data,{required int productId}) async {
+    var response = await HttpUtil().patch("${Urls.updateProduct}/$productId",type: "formdata",formdata: data);
+    return CommonPostRes.fromJson(response);
   }
 
 }

@@ -5,6 +5,8 @@ class Urls {
   static const String productStatus = 'Admin/ProductStatusChange?ProductId=';
   static const String productDetail = 'Admin/getProductDetail?ProductId=';
   static const String getCategory = '/Admin/getCategory';
+  static const String createProduct = '/Admin/CreateProduct';
+  static const String updateProduct = '/Admin/updateProduct';
 
 
 

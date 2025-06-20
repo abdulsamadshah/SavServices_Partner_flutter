@@ -45,6 +45,32 @@ class HttpUtil {
       }
     }
   }
+  Future<dynamic> patch(String path,
+      {dynamic data,
+        Map<String, dynamic>? queryParameteres,
+        FormData? formdata,
+        String? type}) async {
+    try {
+      api.sendRequest.options.headers['accept'] = 'application/json';
+      api.sendRequest.options.headers["authorization"] =
+      "${Global.storageServices.get(PrefConst.deviceToken)}";
+
+      api.sendRequest.options.headers['content-type'] = 'application/json';
+      api.sendRequest.options.headers['content-type'] =
+      'application/x-www-form-urlencoded';
+      var response = await api.sendRequest.patch(path,
+          data: type == "formdata" ? formdata : data,
+          queryParameters: queryParameteres);
+
+      return response.data;
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiErrorHandler.handleDioError(e);
+      } else {
+        throw "An unexpected error occurred. Please try again.";
+      }
+    }
+  }
 
   Future<dynamic> authPost(String path,
       {dynamic data,

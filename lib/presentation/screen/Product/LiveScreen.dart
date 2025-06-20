@@ -94,7 +94,8 @@ class _LivescreenState extends State<Livescreen> {
               return Product_Ui(
                 context,
                 LiveProduct_data!,
-                productCubit: productCubit
+                productCubit: productCubit,
+
               );
             },
           ),
