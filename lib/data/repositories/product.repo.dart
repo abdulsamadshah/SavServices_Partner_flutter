@@ -1,6 +1,7 @@
 
 import 'package:partner/core/Utils/urls.dart';
 import 'package:partner/data/http/http_util.dart';
+import 'package:partner/data/models/CateogoryListRes.dart';
 import 'package:partner/data/models/CommonPostRes.dart';
 import 'package:partner/data/models/Product/ProductDetailRes.dart';
 import 'package:partner/data/models/Product/ProductRes.dart';
@@ -21,6 +22,12 @@ class ProductRepo{
     var response =
     await HttpUtil().get("${Urls.productDetail}$productId",);
     return ProductDetailRes.fromJson(response);
+  }
+
+
+  static Future<CateogoryListRes> getCategoryList() async {
+    var response = await HttpUtil().get(Urls.getCategory,);
+    return CateogoryListRes.fromJson(response);
   }
 
 }

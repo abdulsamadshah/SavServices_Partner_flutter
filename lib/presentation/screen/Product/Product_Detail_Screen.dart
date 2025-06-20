@@ -14,6 +14,7 @@ import 'package:partner/logic/bloc/Product/ProductDetail/product_detail_cubit.da
 import 'package:partner/presentation/common_widget/common_widget.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import 'UpdateProductScreen.dart';
 import 'Widget/product_widget.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -141,27 +142,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
 
                   ),
-                  // CachedNetworkImage(
-                  //   imageUrl: MyAppTheme.notFoundImg,
-                  //   imageBuilder: (context, imageProvider) => Container(
-                  //     height: 300.h,
-                  //     decoration: BoxDecoration(
-                  //       image: DecorationImage(
-                  //         image: imageProvider,
-                  //         fit: BoxFit.fill,
-                  //       ),
-                  //     ),
-                  //     child: Padding(
-                  //       padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 20.w),
-                  //       child: Row(
-                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //         children: [
-                  //           BackpressIcon(context),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+
 
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
@@ -182,6 +163,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           fontweight: FontWeight.w500,
                         ),
                         SizedBox(height: 10.h),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -363,7 +345,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       child: reausablebuttons(
                         title: "Edit Product".tr,
                         ontap: () {
-                          // Navigate to edit page
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Updateproductscreen(detail: detail!,),));
                         },
                       ),
                     ),

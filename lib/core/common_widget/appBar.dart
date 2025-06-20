@@ -22,7 +22,7 @@ PreferredSize mainAppBar(BuildContext context,
           ],
         ),
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular( type=="basic"?0.r:15.r),
+          bottom: Radius.circular( type=="custom"?15.r:0.r),
         ),
       ),
       child: AppBar(
@@ -32,17 +32,17 @@ PreferredSize mainAppBar(BuildContext context,
             onTap: () {
               Navigator.pop(context,popValue);
             },
-            child: type=="basic"?reausableIcon(
-              icon: Icons.arrow_back_ios_outlined,
-              color: Colors.white,
-            ):CircleAvatar(
+            child: type=="custom"?CircleAvatar(
               radius: 15.r,
               backgroundColor: Colors.white,
               child: reausableIcon(
                 icon: Icons.arrow_back_ios_outlined,
                 color: Colors.black,
               ),
-            ),
+            ):reausableIcon(
+              icon: Icons.arrow_back_ios_outlined,
+              color: Colors.white,
+            )
           ),
         ),
         centerTitle: centerTitle,

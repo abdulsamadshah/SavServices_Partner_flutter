@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:partner/core/Utils/app_res.dart';
+import 'package:partner/logic/bloc/Product/ProductDetail/product_detail_cubit.dart';
 import 'Routers/app_route_config.dart';
 import 'core/constant/global.dart';
 
@@ -35,13 +37,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      builder: (context, child) => MaterialApp.router(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (BuildContext context) => ProductDetailCubit()),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (context, child) => MaterialApp.router(
 
-        title: AppRes.appName,
-        debugShowCheckedModeBanner: false,
-        routerConfig: widget.router,
+          title: AppRes.appName,
+          debugShowCheckedModeBanner: false,
+          routerConfig: widget.router,
+        ),
       ),
     );
   }
