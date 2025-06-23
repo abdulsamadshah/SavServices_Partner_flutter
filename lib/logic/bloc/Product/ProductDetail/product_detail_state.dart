@@ -10,6 +10,10 @@ class ProductDetailState {
   List<dynamic> uploadedImageUrls = [];
   String? selectedTime;
 
+  List<String> mbpsList = [];
+  List<String> monthList = [];
+  List<String> priceList = [];
+
   ProductDetailState(
       {this.error,
       this.detail,
@@ -17,7 +21,7 @@ class ProductDetailState {
       this.selectedCategoryName,
       this.selectedImages = const [],
       this.uploadedImageUrls = const [],
-      this.selectedTime});
+      this.selectedTime,this.mbpsList=const [],this.monthList=const [],this.priceList=const []});
 
   ProductDetailState copyWith({
     String? error,
@@ -27,6 +31,9 @@ class ProductDetailState {
     List<File>? selectedImages,
     List<dynamic>? uploadedImageUrls,
     String? selectedTime,
+    List<String>? mbpsList,
+    List<String>? monthList,
+    List<String>? priceList,
   }) {
     return ProductDetailState(
         error: error ?? this.error,
@@ -35,7 +42,12 @@ class ProductDetailState {
         selectedCategoryName: selectedCategoryName ?? this.selectedCategoryName,
         selectedImages: selectedImages ?? this.selectedImages,
         uploadedImageUrls: uploadedImageUrls ?? this.uploadedImageUrls,
-        selectedTime: selectedTime ?? this.selectedTime);
+        selectedTime: selectedTime ?? this.selectedTime,
+        mbpsList: mbpsList ?? this.mbpsList,
+        monthList: monthList ?? this.monthList,
+        priceList: priceList ?? this.priceList,
+
+    );
   }
 }
 

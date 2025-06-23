@@ -29,6 +29,11 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   final productQty = TextEditingController();
   final brandName = TextEditingController();
 
+
+  final TextEditingController mbpsController = TextEditingController();
+  final TextEditingController monthController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+
   final List<String> pickupTimes = [
     "08:00 AM - 09:00 AM",
     "09:00 AM - 10:00 AM",
@@ -47,15 +52,61 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
     productQty.text = "${detail?.productQty ?? ""}";
     brandName.text = detail?.brandName ?? "";
     selectPickUpTime("08:00 AM - 09:00 AM");
+
+
+    // ✅ Parse variant strings if available and update state
+    final List<String>? mbpsList = detail?.mbps != null
+        ? (detail?.mbps is List
+        ? (detail?.mbps as List).map((e) => e.toString()).toList()
+        : detail?.mbps.toString().replaceAll(RegExp(r'[\[\]\s]'), '').split(','))
+        : [];
+
+
+    final List<String>? monthList = detail?.month != null
+        ? (detail?.month is List
+        ? (detail?.month as List).map((e) => e.toString()).toList()
+        : detail?.month.toString().replaceAll(RegExp(r'[\[\]\s]'), '').split(','))
+        : [];
+
+    final List<String>? priceList = detail?.price != null
+        ? (detail?.price is List
+        ? (detail?.price as List).map((e) => e.toString()).toList()
+        : detail?.price.toString().replaceAll(RegExp(r'[\[\]\s]'), '').split(','))
+        : [];
+    // addMbps(mbpsList.toString());
+    // addPrice(priceList.toString());
+    // addMonth(monthList.toString());
+
+    for (var item in mbpsList!) {
+      addMbps(item);
+    }
+    for (var item in monthList!) {
+      addMonth(item);
+    }
+    for (var item in priceList!) {
+      addPrice(item);
+    }
+
     // selectPickUpTime(detail.pickUpTime);
     setUploadedImages(detail!.productImage!);
     dynamic selected = {
       "id": detail.categoryId,
       "name": detail.categoryName,
     };
+
     log("--------SelectedCateogryDetail------$selected",);
     selectCategoryName(selected);
     selectProductImage(detail.productImage);
+
+
+
+    // emit(state.copyWith(
+    //   mbpsList: mbpsList,
+    //   monthList: monthList,
+    //   priceList: priceList,
+    // ));
+
+
 
   }
 
@@ -118,9 +169,9 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
         'verified': 'true',
         'Brand_Name': brandName.text,
         "Product_Image": imageFiles,
-        // 'Mbps': '[50, 100, 200]',
-        // 'Month': '[3,6,12]',
-        // 'Price': '[2000,4000,12000]',
+        'Mbps': state.mbpsList.toString(),
+        'Month': state.monthList.toString(),
+        'Price': state.priceList.toString(),
       });
 
       var result = await ProductRepo.createProduct(data);
@@ -163,9 +214,9 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
         'Product_Qty': productQty.text,
         'verified': 'true',
         'Brand_Name': brandName.text,
-        // 'Mbps': '[50, 100, 200]',
-        // 'Month': '[3,6,12]',
-        // 'Price': '[2000,4000,12000]',
+        'Mbps': state.mbpsList.toString(),
+        'Month': state.monthList.toString(),
+        'Price': state.priceList.toString(),
         if (imageFiles.isNotEmpty) "Product_Image": imageFiles,
 
 
@@ -227,4 +278,46 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   void setUploadedImages(List<String> urls) {
     emit(state.copyWith(uploadedImageUrls: urls));
   }
+
+
+  void addMbps(String value) {
+    final updated = [...state.mbpsList, value];
+    emit(state.copyWith(mbpsList: updated));
+  }
+
+  void addMonth(String value) {
+    final updated = [...state.monthList, value];
+    emit(state.copyWith(monthList: updated));
+  }
+
+  void addPrice(String value) {
+    final updated = [...state.priceList, value];
+    emit(state.copyWith(priceList: updated));
+  }
+
+  void removeMbps(int index) {
+    final updated = [...state.mbpsList]..removeAt(index);
+    emit(state.copyWith(mbpsList: updated));
+  }
+
+  void removeMonth(int index) {
+    final updated = [...state.monthList]..removeAt(index);
+    emit(state.copyWith(monthList: updated));
+  }
+
+  void removePrice(int index) {
+    final updated = [...state.priceList]..removeAt(index);
+    emit(state.copyWith(priceList: updated));
+  }
+
+
+  void clearAll() {
+    emit(state.copyWith(
+      mbpsList: [],
+      monthList: [],
+      priceList: [],
+    ));
+  }
+
+
 }

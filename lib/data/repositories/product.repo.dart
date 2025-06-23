@@ -41,4 +41,9 @@ class ProductRepo{
     return CommonPostRes.fromJson(response);
   }
 
+
+  static Future<CommonPostRes> createGroup(FormData data) async {
+    var response = await HttpUtil().post(Urls.createCategory,type: "formdata",formdata: data,);
+    return CommonPostRes.fromJson(response);
+  }
 }

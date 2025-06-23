@@ -12,6 +12,7 @@ import 'package:partner/presentation/common_widget/Input_field.dart';
 import 'package:partner/presentation/common_widget/common_widget.dart';
 
 import '../../../core/constant/DropDown.dart';
+import 'VariantsScreen.dart';
 import 'Widget/PickUpTime.dart';
 import 'Widget/UploadImage.dart';
 
@@ -153,15 +154,22 @@ class _UpdateproductscreenState extends State<Updateproductscreen> {
                         controller.removeUploadedImage(index);
                       }
                     },
-                  )
+                  ),
+
+                  SizedBox(height: 15.h),
+
+                  reausablebuttons(title:  "Variants",ontap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProductVariantScreen(controller: controller,),));
+                  },)
                 ]),
               )),
         ),
         bottomNavigationBar: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           child: reausablebuttons(
-            title: "Update Product",
+            title:widget.type == "update"? "Update Product":"Add Product",
             ontap: () {
+
               if (productKey.currentState!.validate()) {
                 if (widget.type == "update") {
                   controller.updateProduct(context,

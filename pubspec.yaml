@@ -45,6 +45,7 @@ dependencies:
   card_swiper: ^3.0.1
   image_picker: ^1.1.2
   dotted_border: ^3.0.1
+  flutter_image_compress: ^2.4.0
 
 dev_dependencies:
   #flutter packages pub run build_runner build

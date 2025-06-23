@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:partner/core/Utils/app_res.dart';
+import 'package:partner/logic/bloc/Category/category_cubit.dart';
 import 'package:partner/logic/bloc/Product/ProductDetail/product_detail_cubit.dart';
 import 'Routers/app_route_config.dart';
 import 'core/constant/global.dart';
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (BuildContext context) => ProductDetailCubit()),
+        BlocProvider(create: (BuildContext context) => CategoryCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

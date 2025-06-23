@@ -7,6 +7,7 @@ class Urls {
   static const String getCategory = '/Admin/getCategory';
   static const String createProduct = '/Admin/CreateProduct';
   static const String updateProduct = '/Admin/updateProduct';
+  static const String createCategory = '/Admin/CreateCategory';
 
 
 

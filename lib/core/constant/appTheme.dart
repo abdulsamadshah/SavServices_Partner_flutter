@@ -13,7 +13,8 @@ import 'package:partner/gen/fonts.gen.dart';
 class MyAppTheme {
   static String notFoundImg = "https://via.placeholder.com/350x150";
   static String ProfilenotFoundImg =
-      "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg";
+      "https://i.ibb.co/YFJZHf73/Whats-App-Image-2025-06-14-at-18-12-09.jpg";
+      // "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg";
 
   static Widget customizedTextFormField(BuildContext context,
       {bool enabled = true,

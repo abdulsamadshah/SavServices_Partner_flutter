@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:partner/Routers/app_route_constants.dart';
 import 'package:partner/core/Utils/color_res.dart';
 import 'package:partner/core/Utils/pref_res.dart';
+import 'package:partner/core/constant/BottomSheet/BottomSheet.dart';
 import 'package:partner/core/constant/Dialog.dart';
 
 import 'package:partner/core/constant/appTheme.dart';
@@ -147,6 +148,20 @@ class _NavigationbarState extends State<Navigationbar> {
                           GoRouter.of(context)
                               .goNamed(MyAppRouteConstants.loginScreen);
                         });
+                      },
+                    ),
+
+                    ListTile(
+                      leading: const Icon(
+                        Icons.exit_to_app,
+                      ),
+                      title: reausabletext(
+                        "Create Category",
+                        fontfamily: FontFamily.interMedium,
+                        fontsize: 16,
+                      ),
+                      onTap: () {
+                        BottomSheets().showCreateCategoryBottomSheet(context: context);
                       },
                     ),
                   ],
